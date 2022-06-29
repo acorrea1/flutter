@@ -15,7 +15,7 @@ class _LinhaState extends State<Linha> {
   INICIO CHAMAR API E PLANILHA
   */
   @override
-  List records;
+  late List records;
 
   Future<void> fetch() async {
     String url =
