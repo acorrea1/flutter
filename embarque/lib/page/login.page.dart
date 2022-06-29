@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:embarque/page/linha.page.dart'; //https://macoratti.net/19/07/flut_navig1.htm
 //import 'package:embarque/icons/playstore.png';
 
-class LoginOLD extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _LoginOLDState createState() => _LoginOLDState();
+  _LoginState createState() => _LoginState();
 }
 
-class _LoginOLDState extends State<LoginOLD> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +43,6 @@ class _LoginOLDState extends State<LoginOLD> {
                 ButtonTheme(
                   height: 60.0,
                   child: RaisedButton(
-
                     /*
                     INICIO PROXIMA TELA 
                     https://macoratti.net/19/07/flut_navig1.htm

@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:embarque/page/loginFirebird.page.dart'; //http://www.macoratti.net/19/07/flut_tlogin1.htm
-//import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:embarque/page/login.page.dart';
+//import 'package:embarque/page/loginFirebird.page.dart'; //http://www.macoratti.net/19/07/flut_tlogin1.htm
+//import 'package:lit_firebase_auth/lit_firebase_auth.dart'; //biblioteca não funcional
 import 'package:firebase_core/firebase_core.dart'; //https://imasters.com.br/flutter/autenticacao-simplificada-com-flutter-firebase-e-lit | https://pub.dev/packages/lit_firebase_auth
 
 //import 'package:http/http.dart'; //PARA OBTER DADOS WEB (REST) > https://www.macoratti.net/19/06/flut_web1.htm
 
+/*
+//ESSE TEM QUE ACERTAR
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 }
+*/
 
-/*
-ESSE MAIN FUNCIONA
+//ESSE MAIN FUNCIONA
 void main() {
   runApp(const MyApp());
 }
-*/
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

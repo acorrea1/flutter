@@ -1,4 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+//import 'package:dio/dio.dart'; //https://stackoverflow.com/questions/64303099/how-to-read-and-write-data-in-airtable-with-flutter
+//import 'package:airtable/airtable.dart'; //https://pub.dev/packages/airtable
+import 'package:http/http.dart'
+    as http; //PARA OBTER DADOS WEB (REST) > https://www.youtube.com/watch?v=TKZ-wwjbqVc
 
 class Linha extends StatefulWidget {
   @override
@@ -6,65 +11,55 @@ class Linha extends StatefulWidget {
 }
 
 class _LinhaState extends State<Linha> {
+  /*
+  INICIO CHAMAR API E PLANILHA
+  */
+  @override
+  List records;
+
+  Future<void> fetch() async {
+    String url =
+        'https://api.airtable.com/v0/appFG0WvNKVDZe5H0/linhas?maxRecords=3&view=Grid%20view';
+    Map<String, String> header = {"Authorization": "Bearer keykXoxHVlm9lGx0M"};
+    http.Response res = await http.get(url, headers: header);
+    Map<String, dynamic> result = jsonDecode(res.body);
+
+    records = result['records'];
+    return;
+  }
+  // FIM CHAMAR API E PLANILHA
+
+  @override
+  void initstate() {
+    Future.microtask(() async => await this.fetch());
+    super.initState();
+  }
+
+  /*
+  INICIO DA FUNÇÃO DE EXIBIR O RESULTADO
+  */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red,
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextField(
-                    autofocus: true,
-                    keyboardType: TextInputType.number,
-                    style: TextStyle(color: Colors.blue, fontSize: 30),
-                    decoration: InputDecoration(
-                      labelText: "trocou",
-                      labelStyle: TextStyle(color: Colors.black),
-                    )), //TextField
-                Divider(),
-                TextField(
-                    autofocus: true,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(color: Colors.blue, fontSize: 30),
-                    decoration: InputDecoration(
-                      labelText: "Senha do usuário",
-                      labelStyle: TextStyle(color: Colors.black),
-                    )), //TextField
-
-                Divider(),
-                ButtonTheme(
-                  height: 60.0,
-                  child: RaisedButton(
-                    /*
-                    INICIO PROXIMA TELA 
-                    https://macoratti.net/19/07/flut_navig1.htm
-                    https://www.macoratti.net/19/10/flut_loginapi1.htm
-                    https://www.macoratti.net/19/10/flut_loginapi2.htm
-                    */
-
-                    onPressed: () => {
-                      print("pressionei o botão"),
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Linha()))
-                    }, //FIM PROXIMA TELA
-
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    child: Text(
-                      "Sair",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ), //Text
-                    color: Colors.blue,
-                  ), //RaisedButton
-                ), //ButtonTheme
-              ],
-            ),
-          ),
-        ));
+      backgroundColor: Colors.red,
+      body: records == null
+          ? Center(
+              child: Text("loading ..."),
+            )
+          : ListView.builder(
+              itemCount: this.records.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  height: 200.0,
+                  margin: EdgeInsets.all(5.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <widget>[
+                      Text(this.records[index]['fields']['Rota'].toString()),
+                    ],
+                  ),
+                );
+              }),
+    );
   }
 }
