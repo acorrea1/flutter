@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "41486664375",
+    "project_id": "embarqueflutter",
+    "storage_bucket": "embarqueflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41486664375:android:e4aa249179934b08f7c332",
+        "android_client_info": {
+          "package_name": "com.example.embarque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41486664375-khf63pv2g39nd9917sri9ch4ed9la88g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlgJMa16bv1qfpZvGAe1hr7WZ2odoV9hA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41486664375-khf63pv2g39nd9917sri9ch4ed9la88g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
