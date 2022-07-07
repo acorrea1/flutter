@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:embarque/page/login.page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 //import 'package:embarque/page/loginFirebird.page.dart'; //http://www.macoratti.net/19/07/flut_tlogin1.htm
 //import 'package:lit_firebase_auth/lit_firebase_auth.dart'; //biblioteca não funcional
 //import 'package:firebase_core/firebase_core.dart'; //https://imasters.com.br/flutter/autenticacao-simplificada-com-flutter-firebase-e-lit | https://pub.dev/packages/lit_firebase_auth
@@ -15,12 +17,15 @@ main() async {
 */
 
 //ESSE MAIN FUNCIONA
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  runApp(const Embarque());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Embarque extends StatelessWidget {
+  const Embarque({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override

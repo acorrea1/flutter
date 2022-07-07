@@ -5,7 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart'
     as http; //PARA OBTER DADOS WEB (REST) > https://www.youtube.com/watch?v=TKZ-wwjbqVc
 
+void main() => runApp(MaterialApp(
+      home: Linha(),
+    ));
+
 class Linha extends StatefulWidget {
+  const Linha({Key? key}) : super(key: key);
+
   @override
   _LinhaState createState() => _LinhaState();
 }
@@ -15,7 +21,7 @@ class _LinhaState extends State<Linha> {
   INICIO CHAMAR API E PLANILHA
   */
 
-  List records; //ESTÁ COM ERRO
+  var records;
 
   @override
   Future<void> fetch() async {
@@ -25,7 +31,9 @@ class _LinhaState extends State<Linha> {
     http.Response res = await http.get(url, headers: header);
     Map<String, dynamic> result = jsonDecode(res.body);
 
-    var records = result['records'];
+    records = result['records'];
+    print(url);
+    setState(() {});
     return;
     /*
   FIM CHAMAR API E PLANILHA
@@ -34,8 +42,9 @@ class _LinhaState extends State<Linha> {
 
   @override
   void initstate() {
-    Future.microtask(() async => await this.fetch());
+    Future.microtask(() async => await fetch());
     super.initState();
+    print('initstate ok');
   }
 
   /*
@@ -43,13 +52,14 @@ class _LinhaState extends State<Linha> {
   */
   @override
   Widget build(BuildContext context) {
+    print('tela ok');
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.blueAccent,
       body: records == null
           ? Center(
-              child: Text("loading ..."),
-            )
-          : ListView.builder(
+              child: Text("Buscando linhas"),
+            ):
+           ListView.builder(
               itemCount: this.records.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
@@ -57,7 +67,7 @@ class _LinhaState extends State<Linha> {
                   margin: EdgeInsets.all(5.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: /*<widget>*/ [
+                    children: <Widget>[
                       Text(this.records[index]['fields']['Rota'].toString()),
                     ],
                   ),

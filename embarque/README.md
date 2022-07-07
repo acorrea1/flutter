@@ -9,7 +9,7 @@ A ideia é ter uma aplicação, preferencialmente Android, que identifique o
 embarque dos colaboradores de uma empresa que disponibiliza veiculos fretados.
 
 - O colaborador tem um QR-Code que informa em papel: linha cadastrada e nome completo;
-- A aplicação lê o QR-Code e envia para uma tabela do airtable as seguintes info: Motorista, Linha, Colabaorador e Ponto de embarque;
+- A aplicação lê o QR-Code e envia para uma tabela do airtable as seguintes info: Motorista, Linha, Colababorador e Ponto de embarque;
 
 A few resources to get you started if this is your first Flutter project:
 

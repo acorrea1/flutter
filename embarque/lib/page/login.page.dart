@@ -1,7 +1,7 @@
+import 'package:embarque/page/linha.page.dart';
 import 'package:flutter/material.dart';
-//import 'package:embarque/page/linha.page_dart'; //https://macoratti.net/19/07/flut_navig1.htm
+import 'package:embarque/page/linha.page.dart'; //https://macoratti.net/19/07/flut_navig1.htm
 import 'package:embarque/page/segrota.page.dart';
-//import 'package:embarque/icons/playstore.png';
 
 class Login extends StatefulWidget {
   @override
@@ -54,7 +54,7 @@ class _LoginState extends State<Login> {
                     onPressed: () => {
                       print("pressionei o botão"),
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => segrota()))
+                          MaterialPageRoute(builder: (context) => MyApp()))
                     }, //FIM PROXIMA TELA
 
                     child: Text(
